@@ -54,7 +54,7 @@ class PupilCaptureSource(BaseSource):
         if topic == PupilRemote.Streams.GAZE:
             return MSPDataFrame(
                 topic=self._gaze_topic,
-                data=payload,
+                data=payload["gaze"],
                 timestamp=payload["timestamp"]
             )
 
