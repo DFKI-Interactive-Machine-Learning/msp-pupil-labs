@@ -99,6 +99,14 @@ class FixationEvent:
         return self
 
     @property
+    def finalized(self) -> bool:
+        return self._is_complete
+
+    @property
+    def num_samples(self):
+        return len(self._timestamps)
+
+    @property
     def index(self):
         return self._fixation_id
 

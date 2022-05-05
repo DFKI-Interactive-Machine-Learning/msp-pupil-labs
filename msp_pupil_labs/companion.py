@@ -66,7 +66,7 @@ class PupilCompanionSource(BaseSource):
         else:
             return MSPDataFrame(
                 topic=topic,
-                data= decode_image(data.bgr_pixels, 1088, 1080),
+                data=decode_image(data.bgr_pixels, 1088, 1080),
                 timestamp=data.timestamp_unix_seconds - self._time_offset
             )
 
