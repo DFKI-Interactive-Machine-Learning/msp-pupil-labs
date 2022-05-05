@@ -80,13 +80,15 @@ class GazeSample:
 
 class FixationEvent:
 
-    def __init__(self, fixation_id: int, timestamp: float, duration: float, norm_pos: np.ndarray, video_resolution):
+    def __init__(self, fixation_id: int, timestamp: float, duration: float,
+                 norm_pos: np.ndarray, video_resolution, origin=GazeSample.ORIGIN_TOP_LEFT):
         self._is_complete = False
         self._fixation_id = fixation_id
         self._timestamps = []
         self._durations = []
         self._norm_pos = []
         self._video_resolution = video_resolution
+        self._origin = origin
         self.add_partial_fixation(fixation_id, timestamp, duration, norm_pos)
 
     def add_partial_fixation(self, fixation_id: int, timestamp: float, duration: float, norm_pos: np.ndarray):
@@ -128,6 +130,6 @@ class FixationEvent:
             gaze=norm_positions.mean(axis=0),
             normalized=True,
             reference_size=self._video_resolution,
-            origin=GazeSample.ORIGIN_BOTTOM_LEFT
+            origin=self._origin
         )
         return fixation
