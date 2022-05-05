@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='msp-pupil-labs',
-    version='1.0.7',
+    version='1.0.8',
     author='Michael Barz',
     author_email='michael.barz@dfki.de',
     license='CC BY-NC-SA 4.0',

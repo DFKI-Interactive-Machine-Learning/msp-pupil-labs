@@ -63,12 +63,14 @@ class PupilCompanionSource(BaseSource):
                 data=gaze,
                 timestamp=data.timestamp_unix_seconds - self._time_offset
             )
-        else:
+        elif topic.name == "scene_video":
             return MSPDataFrame(
                 topic=topic,
                 data=decode_image(data.bgr_pixels, 1088, 1080),
                 timestamp=data.timestamp_unix_seconds - self._time_offset
             )
+        else:
+            return None
 
     def on_stop(self):
         self._gaze_thread.join()
