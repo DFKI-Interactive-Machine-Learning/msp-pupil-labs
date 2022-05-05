@@ -56,7 +56,7 @@ class PupilCompanionSource(BaseSource):
 
     def on_update(self) -> Optional[MSPDataFrame]:
         topic, data = self._queue.get()
-        if topic.name == "gaze":
+        if topic.name == "gaze" and data["worn"]:
             gaze = GazeSample(gaze=(data[0], data[1]), reference_size=(1088, 1080), normalized=False, origin="tl")
             return MSPDataFrame(
                 topic=topic,
