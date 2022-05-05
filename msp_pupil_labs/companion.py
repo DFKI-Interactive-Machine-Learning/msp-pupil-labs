@@ -44,7 +44,7 @@ class PupilCompanionSource(BaseSource):
 
     @property
     def output_topics(self) -> Optional[List[Topic]]:
-        return [self._img_topic, self._gaze_topic, ]
+        return [self._img_topic, self._gaze_topic]
 
     def get_gaze(self):
         while self.active:
@@ -56,8 +56,8 @@ class PupilCompanionSource(BaseSource):
 
     def on_update(self) -> Optional[MSPDataFrame]:
         topic, data = self._queue.get()
-        if topic.name == "gaze" and data["worn"]:
-            gaze = GazeSample(gaze=(data[0], data[1]), reference_size=(1088, 1080), normalized=False, origin="tl")
+        if topic.name == "gaze" and data.worn:
+            gaze = GazeSample(gaze=(data.x, data.y), reference_size=(1088, 1080), normalized=False, origin="tl")
             return MSPDataFrame(
                 topic=topic,
                 data=gaze,
