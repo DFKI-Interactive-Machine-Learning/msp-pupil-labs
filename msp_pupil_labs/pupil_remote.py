@@ -115,7 +115,8 @@ class PupilRemote:
                 timestamp=timestamp,
                 duration=duration,
                 norm_pos=norm_pos,
-                video_resolution=self._video_resolution
+                video_resolution=self._video_resolution,
+                origin=GazeSample.ORIGIN_BOTTOM_LEFT
             )
             return [self._current_fixation]
         elif self._current_fixation.index == fixation_id:
@@ -133,7 +134,8 @@ class PupilRemote:
             timestamp=timestamp,
             duration=duration,
             norm_pos=norm_pos,
-            video_resolution=self._video_resolution
+            video_resolution=self._video_resolution,
+            origin=GazeSample.ORIGIN_BOTTOM_LEFT
         )
         return [complete_fixation, self._current_fixation]
 
